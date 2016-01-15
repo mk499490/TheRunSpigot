@@ -1,5 +1,10 @@
-name: The Run
-version: 201601051643
+name: TheRun
+version: 201601131659
 author: Horizon Bagel
 main: com.horizonbagel.therun.Main
 website: http://www.horizonbagel.com/
+
+commands:
+  hey:
+    description: test
+    usage: /hey

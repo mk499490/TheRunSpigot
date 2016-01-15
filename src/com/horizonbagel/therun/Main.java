@@ -1,10 +1,11 @@
 package com.horizonbagel.therun;
 
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
-/**
- * Created by Horizon Bagel on 2016/01/05.
- */
 public class Main extends JavaPlugin{
 
     @Override
@@ -13,7 +14,7 @@ public class Main extends JavaPlugin{
         this.getLogger().warning("危なげなやつ");
         this.getServer().getPluginManager().registerEvents(new TestEvent(), this);
         this.getServer().getPluginManager().registerEvents(new TestEvent2(), this);
-        this.getServer().getPluginManager().registerEvents(new TestEvent3(), this);
+        this.getCommand("hey").setExecutor(new TestEvent3());
     }
 
     @Override

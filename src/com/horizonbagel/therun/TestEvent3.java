@@ -1,45 +1,31 @@
 package com.horizonbagel.therun;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Listener;
-import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scoreboard.DisplaySlot;
-import org.bukkit.scoreboard.Objective;
-import org.bukkit.scoreboard.Scoreboard;
-import org.bukkit.scoreboard.ScoreboardManager;
+import org.bukkit.inventory.ItemStack;
 
 /**
- * 各プレイヤーの頭の上に、現在の体力を表示するプラグイン
+ * Created by Masahiro Kitada on 2016/01/14.
  */
-public class TestEvent3 extends JavaPlugin {
+public class TestEvent3 implements CommandExecutor {
 
-    /** オブジェクティブの名前 */
-    private static final String OBJECTIVE_NAME = "showhealth";
-
-    /**
-     * プラグインが有効化されたときに呼び出されます
-     * @see org.bukkit.plugin.java.JavaPlugin#onEnable()
-     */
     @Override
-    public void onEnable() {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        if (sender instanceof Player) {
+            Player player = (Player) sender;
 
-        // メインスコアボードを取得します。
-        ScoreboardManager manager = Bukkit.getScoreboardManager();
-        Scoreboard board = manager.getMainScoreboard();
+            ItemStack diamond = new ItemStack(Material.DIAMOND, 64);
 
-        // オブジェクティブが既に登録されているかどうか確認し、
-        // 登録されていないなら新規作成します。
-        Objective objective = board.getObjective(OBJECTIVE_NAME);
-        if ( objective == null ) {
-            objective = board.registerNewObjective(OBJECTIVE_NAME, "health");
-            objective.setDisplaySlot(DisplaySlot.BELOW_NAME);
-            objective.setDisplayName("/ 20");
+            player.getInventory().addItem(diamond);
+
+            Bukkit.broadcastMessage(ChatColor.GOLD + "Hey," + player.getName() + "!");
+
         }
-
-        // 全プレイヤーの現在の体力を反映します
-        for (Player player : Bukkit.getOnlinePlayers()) {
-            objective.getScore(player).setScore((int)player.getHealth());
-        }
+        return true;
     }
 }

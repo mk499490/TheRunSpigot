@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="The run:jar">
-    <output-path>C:/PLDev/plugins</output-path>
-    <root id="archive" name="The run.jar">
+  <artifact type="jar" name="TheRun:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/TheRun_jar</output-path>
+    <root id="archive" name="TheRun.jar">
       <element id="module-output" name="The run" />
       <element id="extracted-dir" path="C:/PLDev/BuildTools.jar" path-in-jar="/" />
       <element id="extracted-dir" path="C:/PLDev/spigot-1.8.8.jar" path-in-jar="/" />
