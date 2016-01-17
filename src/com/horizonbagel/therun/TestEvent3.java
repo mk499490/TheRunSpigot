@@ -6,13 +6,19 @@ import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 
-/**
- * Created by Masahiro Kitada on 2016/01/14.
- */
-public class TestEvent3 implements CommandExecutor {
+public class TestEvent3 implements CommandExecutor{
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent event){
+        Player joinedPlayer = event.getPlayer();
+
+        //ItemStack
+    }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {

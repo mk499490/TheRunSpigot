@@ -10,11 +10,12 @@ public class Main extends JavaPlugin{
 
     @Override
     public void onEnable(){
-        this.getLogger().info("ロード完了");
-        this.getLogger().warning("危なげなやつ");
         this.getServer().getPluginManager().registerEvents(new TestEvent(), this);
         this.getServer().getPluginManager().registerEvents(new TestEvent2(), this);
         this.getCommand("hey").setExecutor(new TestEvent3());
+        this.getLogger().info("ロード完了");
+        //this.getLogger().warning("危なげなやつ");
+
     }
 
     @Override
