@@ -1,10 +1,15 @@
 name: TheRun
-version: 201601131659
-author: Horizon Bagel
-main: com.horizonbagel.therun.Main
-website: http://www.horizonbagel.com/
+version: 1.0-SNAPSHOT
+description: This is a simple Bukkit Plugin
+author: MiyanoPeko
+
+main: com.horizonbagel.therun.Main #com.tosogame.third.tosogame3.Main
 
 commands:
   hey:
     description: test
     usage: /hey
+  tr create:
+    description: Shows a hello message to the player
+    usage: |
+      /<command> shows a hello message to the player
