@@ -1,7 +1,7 @@
 name: TheRun
-version: 1.0-SNAPSHOT
-description: This is a simple Bukkit Plugin
-author: MiyanoPeko
+version: 1.0a
+description: この電車は、山手線内回り、東京行きです。
+author: mk499490
 
 main: com.horizonbagel.therun.Main #com.tosogame.third.tosogame3.Main
 
@@ -11,5 +11,5 @@ commands:
     usage: /hey
   tr create:
     description: Shows a hello message to the player
-    usage: |
+    usage:
       /<command> shows a hello message to the player
