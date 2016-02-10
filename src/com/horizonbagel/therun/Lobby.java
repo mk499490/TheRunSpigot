@@ -53,10 +53,13 @@ public class Lobby implements Listener{
     }
 
     @EventHandler
-    public void ballFiring(PlayerInteractEvent event) {
+    public void onArmorWear(PlayerInteractEvent event) {
         Player player = event.getPlayer();
-        if (((event.getAction() == Action.RIGHT_CLICK_AIR) &&
-                (player.getItemInHand().getType().equals(Material.CHAINMAIL_HELMET)))) {
+        event.setCancelled(true);
+        //ItemStack air = new CustomItem(Material.AIR);
+        //player.getInventory().setItem(103, air);
+
+        if (((player.getItemInHand().getType().equals(Material.CHAINMAIL_HELMET)))) {
             Inventory gameRoomSelectorGUI;
             ItemStack cancel = new CustomItem(Material.BARRIER, "§c§lCancel");
             gameRoomSelectorGUI = Bukkit.createInventory(null, 9, "Map Selector");
