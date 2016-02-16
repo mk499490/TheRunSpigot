@@ -11,6 +11,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.inventory.ClickType;
+import org.bukkit.event.inventory.InventoryAction;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
@@ -52,27 +56,40 @@ public class Lobby implements Listener{
 
     }
 
-    @EventHandler
+    /* @EventHandler
     public void onArmorWear(PlayerInteractEvent event) {
         Player player = event.getPlayer();
-        event.setCancelled(true);
+        //event.setCancelled(true);
         //ItemStack air = new CustomItem(Material.AIR);
         //player.getInventory().setItem(103, air);
 
         if (((player.getItemInHand().getType().equals(Material.CHAINMAIL_HELMET)))) {
+            event.setCancelled(true);
+            Inventory gameRoomSelectorGUI;
+            ItemStack cancel = new CustomItem(Material.BARRIER, "§c§lCancel");
+            gameRoomSelectorGUI = Bukkit.createInventory(null, 9, "Map Selector");
+            gameRoomSelectorGUI.setItem(8, cancel);
+            player.openInventory(gameRoomSelectorGUI);
+        } else {
+            event.setCancelled(false);
+        }
+    } */
+
+    @EventHandler
+    public void ballFiring(PlayerInteractEvent event) {
+        Player player = event.getPlayer();
+
+        if (((player.getItemInHand().getType().equals(Material.CHAINMAIL_HELMET)))) {
+            event.setCancelled(true);
             Inventory gameRoomSelectorGUI;
             ItemStack cancel = new CustomItem(Material.BARRIER, "§c§lCancel");
             gameRoomSelectorGUI = Bukkit.createInventory(null, 9, "Map Selector");
             gameRoomSelectorGUI.setItem(8, cancel);
             player.openInventory(gameRoomSelectorGUI);
         }
-    }
-
-    @EventHandler
-    public void ballFiring(PlayerInteractEvent event) {
-        Player player = event.getPlayer();
 
         if (((player.getItemInHand().getType().equals(Material.CHEST)))) {
+            event.setCancelled(true);
             Inventory itemGUI;
             ItemStack cancel = new CustomItem(Material.BARRIER, "§e§lCancel");
             itemGUI = Bukkit.createInventory(null, 27, "Item");
@@ -81,6 +98,7 @@ public class Lobby implements Listener{
         }
 
         if (((player.getItemInHand().getType().equals(Material.EMERALD)))) {
+            event.setCancelled(true);
             Inventory store;
             ItemStack cancel = new CustomItem(Material.BARRIER, "§e§lCancel");
             store = Bukkit.createInventory(null, 27, "Store");
@@ -89,10 +107,58 @@ public class Lobby implements Listener{
         }
 
         if (((player.getItemInHand().getType().equals(Material.ANVIL)))) {
+            event.setCancelled(true);
             Inventory settings;
             ItemStack cancel = new CustomItem(Material.BARRIER, "§e§lCancel");
             settings = Bukkit.createInventory(null, 27, "Settings");
             settings.setItem(26, cancel);
+            player.openInventory(settings);
+        }
+
+        else {
+            event.setCancelled(false);
+        }
+    }
+
+    @EventHandler
+    public void onInventoryClick(InventoryClickEvent event) {
+        Player player = (Player) event.getWhoClicked();
+        ItemStack clicked = event.getCurrentItem();
+        Inventory inventory = event.getInventory();
+
+        //event.setCancelled(true);
+
+        if (inventory.getName().equals(inventory.getName())) {
+            if (clicked.getType() == Material.BARRIER) {
+                event.setCancelled(true);
+                player.closeInventory();
+            }
+
+        }
+
+        if (player.getOpenInventory().getTopInventory().getName().equals("Item")) {
+
+        }
+
+        if (player.getOpenInventory().getTopInventory().getName().equals("Store")) {
+
+        }
+
+        if (player.getOpenInventory().getTopInventory().getName().equals("Settings")) {
+
+        }
+
+        if (player.getOpenInventory().getTopInventory().getName().equals("Game Master Tool")) {
+
+        }
+
+        if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§e§lCancel")) {
+            //event.setCancelled(true);
+            player.closeInventory();
+        }
+
+        else {
+            event.setCancelled(false);
         }
     }
 }
