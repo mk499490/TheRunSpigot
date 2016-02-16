@@ -67,4 +67,32 @@ public class Lobby implements Listener{
             player.openInventory(gameRoomSelectorGUI);
         }
     }
+
+    @EventHandler
+    public void ballFiring(PlayerInteractEvent event) {
+        Player player = event.getPlayer();
+
+        if (((player.getItemInHand().getType().equals(Material.CHEST)))) {
+            Inventory itemGUI;
+            ItemStack cancel = new CustomItem(Material.BARRIER, "§e§lCancel");
+            itemGUI = Bukkit.createInventory(null, 27, "Item");
+            itemGUI.setItem(26, cancel);
+            player.openInventory(itemGUI);
+        }
+
+        if (((player.getItemInHand().getType().equals(Material.EMERALD)))) {
+            Inventory store;
+            ItemStack cancel = new CustomItem(Material.BARRIER, "§e§lCancel");
+            store = Bukkit.createInventory(null, 27, "Store");
+            store.setItem(26, cancel);
+            player.openInventory(store);
+        }
+
+        if (((player.getItemInHand().getType().equals(Material.ANVIL)))) {
+            Inventory settings;
+            ItemStack cancel = new CustomItem(Material.BARRIER, "§e§lCancel");
+            settings = Bukkit.createInventory(null, 27, "Settings");
+            settings.setItem(26, cancel);
+        }
+    }
 }
