@@ -1,6 +1,5 @@
 package com.horizonbagel.therun;
 
-import net.minecraft.server.v1_8_R3.CommandTellRaw;
 import net.minecraft.server.v1_8_R3.IChatBaseComponent;
 import net.minecraft.server.v1_8_R3.PacketPlayOutTitle;
 import org.bukkit.Bukkit;
@@ -10,17 +9,16 @@ import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
-import org.bukkit.event.inventory.ClickType;
-import org.bukkit.event.inventory.InventoryAction;
+import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 public class Lobby implements Listener{
+
+    ItemStack cancel = new CustomItem(Material.BARRIER, "§c§lCancel");
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event){
@@ -56,42 +54,44 @@ public class Lobby implements Listener{
 
     }
 
-    /* @EventHandler
+    @EventHandler
     public void onArmorWear(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         //event.setCancelled(true);
         //ItemStack air = new CustomItem(Material.AIR);
         //player.getInventory().setItem(103, air);
 
+        // ItemStack cancel = new CustomItem(Material.BARRIER, "§c§lCancel");
+
         if (((player.getItemInHand().getType().equals(Material.CHAINMAIL_HELMET)))) {
             event.setCancelled(true);
             Inventory gameRoomSelectorGUI;
-            ItemStack cancel = new CustomItem(Material.BARRIER, "§c§lCancel");
+            // ItemStack cancel = new CustomItem(Material.BARRIER, "§c§lCancel");
             gameRoomSelectorGUI = Bukkit.createInventory(null, 9, "Map Selector");
             gameRoomSelectorGUI.setItem(8, cancel);
             player.openInventory(gameRoomSelectorGUI);
         } else {
             event.setCancelled(false);
         }
-    } */
+    }
 
     @EventHandler
     public void ballFiring(PlayerInteractEvent event) {
         Player player = event.getPlayer();
 
-        if (((player.getItemInHand().getType().equals(Material.CHAINMAIL_HELMET)))) {
+        /* if (((player.getItemInHand().getType().equals(Material.CHAINMAIL_HELMET)))) {
             event.setCancelled(true);
             Inventory gameRoomSelectorGUI;
             ItemStack cancel = new CustomItem(Material.BARRIER, "§c§lCancel");
             gameRoomSelectorGUI = Bukkit.createInventory(null, 9, "Map Selector");
             gameRoomSelectorGUI.setItem(8, cancel);
             player.openInventory(gameRoomSelectorGUI);
-        }
+        } */
 
         if (((player.getItemInHand().getType().equals(Material.CHEST)))) {
             event.setCancelled(true);
             Inventory itemGUI;
-            ItemStack cancel = new CustomItem(Material.BARRIER, "§e§lCancel");
+            //ItemStack cancel = new CustomItem(Material.BARRIER, "§e§lCancel");
             itemGUI = Bukkit.createInventory(null, 27, "Item");
             itemGUI.setItem(26, cancel);
             player.openInventory(itemGUI);
@@ -100,11 +100,38 @@ public class Lobby implements Listener{
         if (((player.getItemInHand().getType().equals(Material.EMERALD)))) {
             event.setCancelled(true);
             Inventory store;
-            ItemStack cancel = new CustomItem(Material.BARRIER, "§e§lCancel");
+            //ItemStack cancel = new CustomItem(Material.BARRIER, "§e§lCancel");
             store = Bukkit.createInventory(null, 27, "Store");
             store.setItem(26, cancel);
             player.openInventory(store);
         }
+
+        if (((player.getItemInHand().getType().equals(Material.ANVIL)))) {
+            event.setCancelled(true);
+            Inventory settings;
+            //ItemStack cancel = new CustomItem(Material.BARRIER, "§e§lCancel");
+            settings = Bukkit.createInventory(null, 27, "Settings");
+            settings.setItem(26, cancel);
+            player.openInventory(settings);
+        }
+
+        if (((player.getItemInHand().getType().equals(Material.COMMAND)))) {
+            event.setCancelled(true);
+            Inventory gameMasterTool;
+            //ItemStack cancel = new CustomItem(Material.BARRIER, "§e§lCancel");
+            gameMasterTool = Bukkit.createInventory(null, 27, "Game Master Tool");
+            gameMasterTool.setItem(26, cancel);
+            player.openInventory(gameMasterTool);
+        }
+
+        else {
+            event.setCancelled(false);
+        }
+    }
+
+    /* @EventHandler
+    public void BlockPlaceEvent(BlockPlaceEvent event) {
+        Player player = event.getPlayer();
 
         if (((player.getItemInHand().getType().equals(Material.ANVIL)))) {
             event.setCancelled(true);
@@ -115,10 +142,19 @@ public class Lobby implements Listener{
             player.openInventory(settings);
         }
 
+        if (((player.getItemInHand().getType().equals(Material.COMMAND)))) {
+            event.setCancelled(true);
+            Inventory gameMasterTool;
+            ItemStack cancel = new CustomItem(Material.BARRIER, "§e§lCancel");
+            gameMasterTool = Bukkit.createInventory(null, 27, "Game Master Tool");
+            gameMasterTool.setItem(26, cancel);
+            player.openInventory(gameMasterTool);
+        }
+
         else {
             event.setCancelled(false);
         }
-    }
+    } */
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
