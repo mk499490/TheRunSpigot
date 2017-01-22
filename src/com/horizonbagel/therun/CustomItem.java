@@ -1,13 +1,12 @@
 package com.horizonbagel.therun;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.List;
 
 public class CustomItem extends ItemStack {
 

@@ -1,15 +1,14 @@
 package com.horizonbagel.therun;
 
-import net.minecraft.server.v1_8_R3.IChatBaseComponent;
-import net.minecraft.server.v1_8_R3.PacketPlayOutTitle;
+import net.minecraft.server.v1_11_R1.IChatBaseComponent;
+import net.minecraft.server.v1_11_R1.PacketPlayOutTitle;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_11_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -48,7 +47,7 @@ public class Lobby implements Listener{
         player.getInventory().setItem(3, store);
         player.getInventory().setItem(5, settings);
 
-        if (player.isOp()) {
+        if (player.isOp() || player.hasPermission("gamemaster")) {
             player.getInventory().setItem(7, gameMasterTool);
         }
 
@@ -63,7 +62,7 @@ public class Lobby implements Listener{
 
         // ItemStack cancel = new CustomItem(Material.BARRIER, "§c§lCancel");
 
-        if (((player.getItemInHand().getType().equals(Material.CHAINMAIL_HELMET)))) {
+        if (player.getInventory().getItemInMainHand().getType().equals(Material.CHAINMAIL_HELMET)) {
             event.setCancelled(true);
             Inventory gameRoomSelectorGUI;
             // ItemStack cancel = new CustomItem(Material.BARRIER, "§c§lCancel");
@@ -79,19 +78,9 @@ public class Lobby implements Listener{
     public void ballFiring(PlayerInteractEvent event) {
         Player player = event.getPlayer();
 
-        /* if (((player.getItemInHand().getType().equals(Material.CHAINMAIL_HELMET)))) {
-            event.setCancelled(true);
-            Inventory gameRoomSelectorGUI;
-            ItemStack cancel = new CustomItem(Material.BARRIER, "§c§lCancel");
-            gameRoomSelectorGUI = Bukkit.createInventory(null, 9, "Map Selector");
-            gameRoomSelectorGUI.setItem(8, cancel);
-            player.openInventory(gameRoomSelectorGUI);
-        } */
-
         if (((player.getItemInHand().getType().equals(Material.CHEST)))) {
             event.setCancelled(true);
             Inventory itemGUI;
-            //ItemStack cancel = new CustomItem(Material.BARRIER, "§e§lCancel");
             itemGUI = Bukkit.createInventory(null, 27, "Item");
             itemGUI.setItem(26, cancel);
             player.openInventory(itemGUI);
@@ -100,7 +89,6 @@ public class Lobby implements Listener{
         if (((player.getItemInHand().getType().equals(Material.EMERALD)))) {
             event.setCancelled(true);
             Inventory store;
-            //ItemStack cancel = new CustomItem(Material.BARRIER, "§e§lCancel");
             store = Bukkit.createInventory(null, 27, "Store");
             store.setItem(26, cancel);
             player.openInventory(store);
@@ -109,7 +97,6 @@ public class Lobby implements Listener{
         if (((player.getItemInHand().getType().equals(Material.ANVIL)))) {
             event.setCancelled(true);
             Inventory settings;
-            //ItemStack cancel = new CustomItem(Material.BARRIER, "§e§lCancel");
             settings = Bukkit.createInventory(null, 27, "Settings");
             settings.setItem(26, cancel);
             player.openInventory(settings);
@@ -118,7 +105,6 @@ public class Lobby implements Listener{
         if (((player.getItemInHand().getType().equals(Material.COMMAND)))) {
             event.setCancelled(true);
             Inventory gameMasterTool;
-            //ItemStack cancel = new CustomItem(Material.BARRIER, "§e§lCancel");
             gameMasterTool = Bukkit.createInventory(null, 27, "Game Master Tool");
             gameMasterTool.setItem(26, cancel);
             player.openInventory(gameMasterTool);
@@ -129,40 +115,11 @@ public class Lobby implements Listener{
         }
     }
 
-    /* @EventHandler
-    public void BlockPlaceEvent(BlockPlaceEvent event) {
-        Player player = event.getPlayer();
-
-        if (((player.getItemInHand().getType().equals(Material.ANVIL)))) {
-            event.setCancelled(true);
-            Inventory settings;
-            ItemStack cancel = new CustomItem(Material.BARRIER, "§e§lCancel");
-            settings = Bukkit.createInventory(null, 27, "Settings");
-            settings.setItem(26, cancel);
-            player.openInventory(settings);
-        }
-
-        if (((player.getItemInHand().getType().equals(Material.COMMAND)))) {
-            event.setCancelled(true);
-            Inventory gameMasterTool;
-            ItemStack cancel = new CustomItem(Material.BARRIER, "§e§lCancel");
-            gameMasterTool = Bukkit.createInventory(null, 27, "Game Master Tool");
-            gameMasterTool.setItem(26, cancel);
-            player.openInventory(gameMasterTool);
-        }
-
-        else {
-            event.setCancelled(false);
-        }
-    } */
-
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         ItemStack clicked = event.getCurrentItem();
         Inventory inventory = event.getInventory();
-
-        //event.setCancelled(true);
 
         if (inventory.getName().equals(inventory.getName())) {
             if (clicked.getType() == Material.BARRIER) {
@@ -189,7 +146,6 @@ public class Lobby implements Listener{
         }
 
         if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§e§lCancel")) {
-            //event.setCancelled(true);
             player.closeInventory();
         }
 

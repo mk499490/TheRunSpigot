@@ -1,5 +1,15 @@
-name: The Run
-version: 201601051643
-author: Horizon Bagel
-main: com.horizonbagel.therun.Main
-website: http://www.horizonbagel.com/
+name: TheRun
+version: 1.0a
+description: The Run Minigame Plugin
+author: mk499490
+
+main: com.horizonbagel.therun.Main #com.tosogame.third.tosogame3.Main
+
+commands:
+  hey:
+    description: test
+    usage: /hey
+  tr create:
+    description: Shows a hello message to the player
+    usage:
+      /<command> shows a hello message to the player

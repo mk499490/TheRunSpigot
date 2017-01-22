@@ -2,10 +2,10 @@
   <artifact type="jar" name="TheRun:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/TheRun_jar</output-path>
     <root id="archive" name="TheRun.jar">
-      <element id="module-output" name="The run" />
-      <element id="extracted-dir" path="C:/PLDev/BuildTools.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="C:/PLDev/spigot-1.8.8.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="C:/PLDev/craftbukkit-1.8.8.jar" path-in-jar="/" />
+      <element id="module-output" name="TheRun" />
+      <element id="extracted-dir" path="D:/Spigot/1.11.2-Spigot/BuildTools.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="D:/Spigot/1.11.2-Spigot/spigot-1.11.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="D:/Spigot/1.11.2-Spigot/craftbukkit-1.11.2.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

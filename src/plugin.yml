@@ -1,6 +1,6 @@
 name: TheRun
 version: 1.0a
-description: この電車は、山手線内回り、東京行きです。
+description: The Run Minigame Plugin
 author: mk499490
 
 main: com.horizonbagel.therun.Main #com.tosogame.third.tosogame3.Main
