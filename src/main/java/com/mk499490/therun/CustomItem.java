@@ -1,4 +1,4 @@
-package com.horizonbagel.therun;
+package com.mk499490.therun;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

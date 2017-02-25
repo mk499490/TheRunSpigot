@@ -1,4 +1,4 @@
-package com.horizonbagel.therun;
+package com.mk499490.therun;
 
 import net.minecraft.server.v1_11_R1.IChatBaseComponent;
 import net.minecraft.server.v1_11_R1.PacketPlayOutTitle;

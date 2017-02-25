@@ -3,7 +3,7 @@ version: 1.0a
 description: The Run Minigame Plugin
 author: mk499490
 
-main: com.horizonbagel.therun.Main #com.tosogame.third.tosogame3.Main
+main: com.mk499490.therun.Main
 
 commands:
   hey:
